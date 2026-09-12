@@ -9,7 +9,7 @@ type ButtonVariant =
   | "filled-olive";
 
 const baseClasses =
-  "inline-flex items-center justify-center border-2 px-[2.875rem] py-5 font-heading text-[clamp(1.25rem,2vw,2rem)] font-bold leading-[1.5] whitespace-nowrap transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4";
+  "inline-flex items-center justify-center border-2 px-[2.25rem] py-4 font-heading text-[clamp(1.125rem,1.5vw,1.5rem)] font-bold leading-[1.5] whitespace-nowrap transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4";
 
 const variantClasses: Record<ButtonVariant, string> = {
   "border-dark":

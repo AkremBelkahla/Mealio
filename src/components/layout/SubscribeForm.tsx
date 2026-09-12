@@ -40,7 +40,7 @@ export function SubscribeForm() {
       />
       <button
         type="submit"
-        className="shrink-0 bg-olive px-[2.875rem] py-5 font-heading text-[clamp(1.25rem,2vw,2rem)] font-bold leading-[1.5] text-white transition-colors hover:bg-lime-leaf focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+        className="shrink-0 bg-olive px-[2.25rem] py-4 font-heading text-[clamp(1.125rem,1.5vw,1.5rem)] font-bold leading-[1.5] text-white transition-colors hover:bg-lime-leaf focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
       >
         Subscribe
       </button>

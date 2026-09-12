@@ -15,7 +15,9 @@
       "Exec(sleep)",
       "Exec(git ls-files)",
       "Exec(file)",
-      "Exec(rm)"
+      "Exec(rm)",
+      "Exec(mv)",
+      "Exec(npm test)"
     ]
   }
 }

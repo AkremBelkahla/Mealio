@@ -28,7 +28,7 @@ export function PriceListItem({ dish, description }: PriceListItemProps) {
           {dish.name}
         </Link>
       </h3>
-      <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
+      <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-xl">
         {description ??
           [dish.area && `${dish.area} inspiration`, dish.category]
             .filter(Boolean)

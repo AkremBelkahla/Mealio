@@ -21,7 +21,7 @@ const TIME_SLOTS = [
 const PARTY_SIZES = [1, 2, 3, 4, 5, 6, 7, 8];
 
 const fieldClasses =
-  "h-24 w-full border-2 border-black bg-transparent px-10 font-body text-xl leading-[1.4] tracking-[0.02em] text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-olive xl:text-2xl";
+  "h-20 w-full border-2 border-black bg-transparent px-8 font-body text-base leading-[1.4] tracking-[0.02em] text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-olive xl:text-lg";
 
 /**
  * Reservation-styled contact form. There is no booking backend: submitting
@@ -113,7 +113,7 @@ export function ReservationForm() {
 
       <button
         type="submit"
-        className="border-2 border-black bg-forest px-[2.875rem] py-5 font-heading text-[clamp(1.25rem,2vw,2rem)] font-bold leading-[1.5] text-white transition-colors hover:bg-olive focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive"
+        className="border-2 border-black bg-forest px-[2.25rem] py-4 font-heading text-[clamp(1.125rem,1.5vw,1.5rem)] font-bold leading-[1.5] text-white transition-colors hover:bg-olive focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive"
       >
         Book Now
       </button>

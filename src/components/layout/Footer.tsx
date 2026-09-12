@@ -19,7 +19,7 @@ export function Footer() {
     <footer className="bg-forest text-white">
       <div className="mx-auto grid max-w-[120rem] grid-cols-1 gap-16 px-6 py-20 md:px-12 lg:grid-cols-[1.1fr_1fr_1.6fr] xl:px-[8.625rem] xl:py-28">
         <div>
-          <p className="font-heading text-6xl font-bold leading-[1.1] xl:text-[4.25rem]">
+          <p className="font-heading text-4xl font-bold leading-[1.1] xl:text-5xl">
             {SITE.name}
             <span className="text-lime-leaf">.</span>
           </p>
@@ -29,7 +29,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h2 className="font-heading text-[2rem] font-bold leading-[1.5]">
+          <h2 className="font-heading text-2xl font-bold leading-[1.5]">
             Contact
           </h2>
           <div className="mt-12 flex flex-col gap-12 font-body text-lg leading-[25px] tracking-[0.02em]">
@@ -57,7 +57,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h2 className="font-heading text-[2rem] font-bold leading-[1.5]">
+          <h2 className="font-heading text-2xl font-bold leading-[1.5]">
             Never Miss a Recipe
           </h2>
           <div className="mt-12">
@@ -71,9 +71,17 @@ export function Footer() {
 
       <div className="border-t-2 border-dashed border-olive/60">
         <div className="mx-auto flex max-w-[120rem] flex-col items-start justify-between gap-6 px-6 py-10 md:px-12 lg:flex-row lg:items-center xl:px-[8.625rem]">
-          <p className="font-body text-lg leading-[1.4] tracking-[0.02em] xl:text-2xl">
+          <p className="font-body text-base leading-[1.4] tracking-[0.02em]">
             © {new Date().getFullYear()} {SITE.name}. All rights reserved.
           </p>
+          <a
+            href="https://infinityweb.tn"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-body text-base leading-[1.4] tracking-[0.02em] text-white/80 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+          >
+            Developped by infinityweb.tn
+          </a>
           <ul className="flex items-center gap-7">
             {SOCIAL_LINKS.map(({ label, href, Icon }) => (
               <li key={label}>

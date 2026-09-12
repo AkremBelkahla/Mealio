@@ -27,7 +27,7 @@ export function Navbar({ variant = "dark", overlay = false }: NavbarProps) {
           <a
             href={`tel:${RESTAURANT.phone.replace(/[^+\d]/g, "")}`}
             className={cn(
-              "hidden font-body text-[1.375rem] leading-none tracking-[0.02em] transition-opacity hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 lg:block",
+              "hidden font-body text-lg leading-none tracking-[0.02em] transition-opacity hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 lg:block",
               light
                 ? "text-white focus-visible:outline-white"
                 : "text-forest focus-visible:outline-olive",

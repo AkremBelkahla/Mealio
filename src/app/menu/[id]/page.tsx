@@ -147,7 +147,7 @@ export default async function DishPage({ params }: PageProps<"/menu/[id]">) {
                   >
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
+                  <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-xl">
                     {step}
                   </p>
                 </li>

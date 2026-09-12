@@ -48,12 +48,12 @@ export function Testimonial() {
     <div className="relative">
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -top-24 right-0 select-none font-heading text-[12rem] font-bold leading-none text-sage xl:-top-32 xl:text-[20rem]"
+        className="pointer-events-none absolute -top-20 right-0 select-none font-heading text-[8rem] font-bold leading-none text-sage xl:-top-28 xl:text-[13rem]"
       >
         &ldquo;
       </span>
 
-      <blockquote className="relative font-heading text-[1.75rem] font-bold leading-[1.35] text-black xl:text-[2.75rem]">
+      <blockquote className="relative font-heading text-2xl font-bold leading-[1.35] text-black xl:text-[2rem]">
         {item.quote}
       </blockquote>
 
@@ -67,7 +67,7 @@ export function Testimonial() {
             className="size-24 rounded-full object-cover"
           />
           <div>
-            <p className="font-heading text-xl font-bold text-black xl:text-2xl">
+            <p className="font-heading text-xl font-bold text-black xl:text-xl">
               {item.name}
             </p>
             <p className="font-body text-lg tracking-[0.02em] text-stone-text">

@@ -34,14 +34,14 @@ export function DishCard({ dish }: DishCardProps) {
       </div>
       <div className="mt-6 flex items-start justify-between gap-4">
         <div>
-          <h3 className="font-heading text-2xl font-bold leading-snug text-forest transition-colors group-hover:text-olive xl:text-[2rem]">
+          <h3 className="font-heading text-xl font-bold leading-snug text-forest transition-colors group-hover:text-olive xl:text-2xl">
             {dish.name}
           </h3>
           <p className="mt-2 font-body text-base tracking-[0.02em] text-stone-text">
             {[dish.area, dish.category].filter(Boolean).join(" · ")}
           </p>
         </div>
-        <p className="shrink-0 font-heading text-2xl font-bold text-olive">
+        <p className="shrink-0 font-heading text-xl font-bold text-olive">
           {formatPrice(dish.price)}
         </p>
       </div>

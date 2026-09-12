@@ -43,7 +43,7 @@ export default function ContactPage() {
             <h2 className="font-heading text-h1 font-bold text-black">
               Make a Reservation
             </h2>
-            <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
+            <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-xl">
               Get in touch with the restaurant
             </p>
           </div>
@@ -62,7 +62,7 @@ export default function ContactPage() {
                 aria-hidden="true"
                 className="border-t-2 border-dashed border-olive/50"
               />
-              <div className="flex flex-col gap-3 font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
+              <div className="flex flex-col gap-3 font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-xl">
                 {block.lines.map((line) =>
                   line === RESTAURANT.phone ? (
                     <a

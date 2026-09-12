@@ -132,14 +132,14 @@ export default async function HomePage() {
         {/* Hero — editorial headline beside the feature dish photograph */}
         <div className="mx-auto grid max-w-[120rem] grid-cols-1 gap-10 px-6 md:px-12 lg:grid-cols-[1.6fr_1fr] xl:gap-0 xl:px-[7.375rem]">
           <div className="flex flex-col justify-center gap-10 py-14 lg:py-32">
-            <h1 className="font-heading font-bold text-white text-[clamp(3rem,6.9vw,9.25rem)] leading-[1.03]">
+            <h1 className="font-heading font-bold text-white text-display">
               Healthy Eating
               <br />
               is important
               <br />
               part of lifestyle
             </h1>
-            <p className="max-w-xl font-body text-lg leading-[1.4] tracking-[0.02em] text-white/85 xl:text-2xl">
+            <p className="max-w-xl font-body text-lg leading-[1.4] tracking-[0.02em] text-white/85 xl:text-xl">
               A seasonal menu built around fresh, honest ingredients — prepared
               with care and served with pride.
             </p>
@@ -210,13 +210,13 @@ export default async function HomePage() {
             <h2 className="font-heading text-h2 font-bold text-white">
               Start to plan your diet today
             </h2>
-            <p className="max-w-lg font-body text-lg leading-[1.4] tracking-[0.02em] text-white/85 xl:text-2xl">
+            <p className="max-w-lg font-body text-lg leading-[1.4] tracking-[0.02em] text-white/85 xl:text-xl">
               Our chef builds a balanced plate around what the season offers —
               vegetables, grains and proteins chosen each morning.
             </p>
           </div>
           <div className="flex flex-col gap-10 lg:pt-24">
-            <p className="max-w-lg font-body text-lg leading-[1.4] tracking-[0.02em] text-white/85 lg:ml-auto xl:text-2xl">
+            <p className="max-w-lg font-body text-lg leading-[1.4] tracking-[0.02em] text-white/85 lg:ml-auto xl:text-xl">
               Every dish on the menu can be adapted — ask the kitchen for a
               lighter version or a vegetarian twist.
             </p>
@@ -248,7 +248,7 @@ export default async function HomePage() {
             <h2 className="font-heading text-h2 font-bold text-forest">
               Our Menu
             </h2>
-            <p className="mt-6 max-w-md font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
+            <p className="mt-6 max-w-md font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-xl">
               This is a section of your menu. A short description keeps it
               light and easy to read.
             </p>
@@ -269,7 +269,7 @@ export default async function HomePage() {
             <VectorLeaf className="pointer-events-none absolute -top-16 -left-10 size-56 text-white opacity-60 xl:size-72" />
             <div className="relative aspect-[37/50] overflow-clip">
               <Image
-                src="/images/home-chef-photo.png"
+                src="/images/home-chef-plating.png"
                 alt="Our chef plating a salmon dish in the kitchen"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
@@ -281,7 +281,7 @@ export default async function HomePage() {
             <h2 className="font-heading text-h2 font-bold text-forest">
               Excellent cook
             </h2>
-            <p className="max-w-lg font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
+            <p className="max-w-lg font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-xl">
               Our kitchen is led by people who love the ingredient first. Every
               dish starts at the market and ends on your plate with as little
               interference as possible.
@@ -315,7 +315,7 @@ export default async function HomePage() {
           <h2 className="font-heading text-h1 font-bold text-black">
             Make a Reservation
           </h2>
-          <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
+          <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-xl">
             Get in touch with the restaurant
           </p>
           <div className="mt-10 w-full">
@@ -332,7 +332,7 @@ export default async function HomePage() {
             <br />
             Energy Balance
           </h2>
-          <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
+          <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-xl">
             Explore the menu by course — from light starters to generous mains
             and comforting soups.
           </p>
@@ -356,7 +356,7 @@ export default async function HomePage() {
                 className="absolute inset-x-0 top-0 h-[22%] bg-gradient-to-b from-forest/20 to-transparent"
               />
               <div className="absolute inset-x-0 top-0 flex items-center justify-between px-[8%] pt-[7%]">
-                <h3 className="font-heading text-[1.75rem] font-bold text-forest transition-colors group-hover:text-olive xl:text-[2rem]">
+                <h3 className="font-heading text-xl font-bold text-forest transition-colors group-hover:text-olive xl:text-2xl">
                   {card.name}
                 </h3>
                 <IconArrowRight className="h-5 w-9 shrink-0 text-forest transition-transform duration-300 group-hover:translate-x-2" />

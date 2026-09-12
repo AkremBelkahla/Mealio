@@ -15,7 +15,7 @@ export function IconBox({ icon: Icon, title, text }: IconBoxProps) {
         <Icon className="size-24 xl:size-32 text-black" />
       </div>
       <h3 className="font-heading text-h4 font-bold text-black">{title}</h3>
-      <p className="max-w-md font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
+      <p className="max-w-md font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-xl">
         {text}
       </p>
     </div>

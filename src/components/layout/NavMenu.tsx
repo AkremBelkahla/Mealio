@@ -93,7 +93,7 @@ export function NavMenu({ variant = "dark" }: NavMenuProps) {
                   <Link
                     href={link.href}
                     aria-current={pathname === link.href ? "page" : undefined}
-                    className="font-heading text-[clamp(2.5rem,7vw,4.125rem)] font-bold uppercase leading-none text-forest transition-colors hover:text-olive focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive"
+                    className="font-heading text-[clamp(2rem,6vw,3.25rem)] font-bold uppercase leading-none text-forest transition-colors hover:text-olive focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive"
                   >
                     {link.label}
                   </Link>

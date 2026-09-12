@@ -45,12 +45,12 @@ export default function AboutPage() {
           <h2 className="font-heading text-h2 font-bold text-forest">
             A kitchen guided by the seasons
           </h2>
-          <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
+          <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-xl">
             Mealio opened with one conviction: great food starts long before
             the stove. It starts at the market, in the field, with growers who
             care about their produce as much as we care about our guests.
           </p>
-          <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
+          <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-xl">
             Every morning our chefs walk the stalls, pick what looks best and
             write the day&rsquo;s menu. Some dishes stay all season, others live
             for a single week — that is the point.
@@ -87,7 +87,7 @@ export default function AboutPage() {
                 <h3 className="font-heading text-h4 font-bold text-black">
                   {value.title}
                 </h3>
-                <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
+                <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-xl">
                   {value.text}
                 </p>
               </article>
@@ -100,7 +100,7 @@ export default function AboutPage() {
         <h2 className="font-heading text-h2 font-bold text-forest">
           Come and taste the season
         </h2>
-        <div className="flex flex-col gap-2 font-body text-lg tracking-[0.02em] text-stone-text xl:text-2xl">
+        <div className="flex flex-col gap-2 font-body text-lg tracking-[0.02em] text-stone-text xl:text-xl">
           {RESTAURANT.hours.map((row) => (
             <p key={row.days}>
               {row.days} · {row.time}

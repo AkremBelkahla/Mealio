@@ -10,7 +10,7 @@ export default function NotFound() {
         <h1 className="font-heading text-h2 font-bold text-forest">
           This plate is empty
         </h1>
-        <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
+        <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-xl">
           The page you are looking for is not on today&rsquo;s menu. Let us take
           you back to something delicious.
         </p>

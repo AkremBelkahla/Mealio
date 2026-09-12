@@ -25,7 +25,7 @@ export function PageHero({ title, subtitle, image, imageAlt }: PageHeroProps) {
       <div className="relative flex flex-col items-center gap-6 px-6 text-center">
         <h1 className="font-heading text-h1 font-bold text-white">{title}</h1>
         {subtitle ? (
-          <p className="max-w-3xl font-body text-lg leading-[1.4] tracking-[0.02em] text-white/90 xl:text-2xl">
+          <p className="max-w-3xl font-body text-lg leading-[1.4] tracking-[0.02em] text-white/90 xl:text-xl">
             {subtitle}
           </p>
         ) : null}
