@@ -13,7 +13,8 @@
       "Exec(npm install)",
       "Exec(npx vitest)",
       "Exec(sleep)",
-      "Exec(git ls-files)"
+      "Exec(git ls-files)",
+      "Exec(file)"
     ]
   }
 }
