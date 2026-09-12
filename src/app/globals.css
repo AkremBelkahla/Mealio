@@ -1,26 +1,46 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Brand palette derived from the reference design tokens */
+  --color-forest: #233000;
+  --color-olive: #5e6600;
+  --color-lime-leaf: #9caa00;
+  --color-sage: #ebf0e4;
+  --color-cream: #f5f7ef;
+  --color-ink: #000000;
+  --color-paper: #ffffff;
+  --color-stone-text: #4d4d4d;
+
+  /* Typography */
+  --font-heading: var(--font-rufina), Georgia, serif;
+  --font-body: var(--font-lato), Arial, sans-serif;
+
+  /* Heading scale (fluid, based on the reference design scale) */
+  --text-display: clamp(3rem, 10vw, 9.25rem);
+  --text-display--line-height: 1.03;
+  --text-h1: clamp(2.75rem, 7.5vw, 6.75rem);
+  --text-h1--line-height: 1.11;
+  --text-h2: clamp(2.25rem, 6vw, 5.5rem);
+  --text-h2--line-height: 1.1;
+  --text-h3: clamp(1.9rem, 4.5vw, 4.25rem);
+  --text-h3--line-height: 1.12;
+  --text-h4: clamp(1.6rem, 3.4vw, 3rem);
+  --text-h4--line-height: 1.15;
+  --text-h5: clamp(1.35rem, 2.4vw, 2rem);
+  --text-h5--line-height: 1.5;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-forest);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: var(--color-olive);
+  color: var(--color-paper);
 }

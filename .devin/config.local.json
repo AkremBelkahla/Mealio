@@ -1,7 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Exec(curl)"
+      "Exec(curl)",
+      "Exec(mkdir)",
+      "Exec(cat)",
+      "Exec(cp)",
+      "Exec(grep)",
+      "Exec(python)",
+      "Exec(wc)"
     ]
   }
 }
