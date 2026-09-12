@@ -1,0 +1,10 @@
+export { VectorLeaf } from "./VectorLeaf";
+export { VectorMint } from "./VectorMint";
+export { VectorRosemary } from "./VectorRosemary";
+export { VectorAvocado } from "./VectorAvocado";
+export { VectorOrange } from "./VectorOrange";
+export { VectorTomato } from "./VectorTomato";
+export { VectorBlueberry } from "./VectorBlueberry";
+export { SvgFish } from "./SvgFish";
+export { SvgCarrot } from "./SvgCarrot";
+export { SvgLemon } from "./SvgLemon";

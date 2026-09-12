@@ -53,7 +53,7 @@ export function Testimonial() {
         &ldquo;
       </span>
 
-      <blockquote className="relative font-heading text-h4 font-bold leading-[1.2] text-black xl:text-h3">
+      <blockquote className="relative font-heading text-[1.75rem] font-bold leading-[1.35] text-black xl:text-[2.75rem]">
         {item.quote}
       </blockquote>
 

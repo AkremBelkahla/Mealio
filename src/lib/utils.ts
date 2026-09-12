@@ -14,5 +14,5 @@ export function slugify(value: string): string {
 }
 
 export function formatPrice(price: number): string {
-  return `$${price.toFixed(2)}`;
+  return `$${Number.isInteger(price) ? price : price.toFixed(2)}`;
 }

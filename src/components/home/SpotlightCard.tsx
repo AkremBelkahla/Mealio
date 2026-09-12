@@ -47,20 +47,20 @@ export function SpotlightCard({
         </span>
       </div>
 
-      <div className="mt-12 flex flex-wrap items-center gap-x-4 gap-y-3 px-2 xl:px-14">
+      <div className="mt-12 flex flex-wrap items-center gap-x-4 gap-y-3 px-2 xl:flex-nowrap xl:px-14">
         <Image
           src={authorImage}
           alt={`Portrait of ${author}`}
           width={60}
           height={60}
-          className="size-15 rounded-none object-cover shadow-[1px_1px_12px_rgba(0,0,0,0.08)]"
+          className="size-15 shrink-0 rounded-none object-cover shadow-[1px_1px_12px_rgba(0,0,0,0.08)]"
         />
         {meta.map((item, index) => (
           <span key={item} className="flex items-center gap-4">
             {index > 0 ? (
               <span aria-hidden="true" className="size-1 rounded-full bg-olive" />
             ) : null}
-            <span className="font-body text-lg tracking-[0.02em] text-olive whitespace-nowrap">
+            <span className="font-body text-base tracking-[0.02em] text-olive whitespace-nowrap xl:text-lg">
               {item}
             </span>
           </span>
@@ -68,12 +68,12 @@ export function SpotlightCard({
       </div>
 
       <div className="mt-10 flex flex-col gap-5 px-2 xl:px-14">
-        <h3 className="font-heading text-h4 font-bold text-black">{title}</h3>
+        <h3 className="font-heading text-[1.6rem] font-bold leading-[1.3] text-black xl:text-[2.25rem]">{title}</h3>
         <div
           aria-hidden="true"
           className="border-t-4 border-dashed border-black/80"
         />
-        <p className="font-body text-lg font-bold leading-[1.4] tracking-[0.02em] text-stone-text xl:text-[1.375rem]">
+        <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-[1.375rem]">
           {excerpt}
         </p>
         <Link

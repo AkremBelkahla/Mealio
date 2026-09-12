@@ -14,7 +14,8 @@
       "Exec(npx vitest)",
       "Exec(sleep)",
       "Exec(git ls-files)",
-      "Exec(file)"
+      "Exec(file)",
+      "Exec(rm)"
     ]
   }
 }

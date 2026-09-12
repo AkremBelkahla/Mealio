@@ -1,4 +1,4 @@
-import { NAV_LINKS, RESTAURANT, SITE } from "@/lib/constants";
+import { RESTAURANT, SITE } from "@/lib/constants";
 import {
   IconFacebook,
   IconInstagram,
@@ -26,20 +26,6 @@ export function Footer() {
           <p className="mt-6 font-body text-lg leading-[1.4] tracking-[0.02em] text-white/80">
             {SITE.tagline}
           </p>
-          <nav aria-label="Footer" className="mt-10">
-            <ul className="flex flex-col gap-3">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="font-body text-lg tracking-[0.02em] text-white/80 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
         </div>
 
         <div>
@@ -67,15 +53,6 @@ export function Footer() {
               <br />
               {RESTAURANT.city}
             </p>
-            <div>
-              {RESTAURANT.hours.map((row) => (
-                <p key={row.days}>
-                  {row.days}
-                  <br />
-                  <span className="text-white/70">{row.time}</span>
-                </p>
-              ))}
-            </div>
           </div>
         </div>
 

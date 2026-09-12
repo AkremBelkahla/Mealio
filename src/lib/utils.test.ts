@@ -34,8 +34,8 @@ describe("slugify", () => {
 });
 
 describe("formatPrice", () => {
-  it("formats whole dollars with two decimals", () => {
-    expect(formatPrice(12)).toBe("$12.00");
+  it("formats whole dollars without decimals", () => {
+    expect(formatPrice(12)).toBe("$12");
   });
 
   it("keeps cents", () => {

@@ -10,6 +10,13 @@ import { SpotlightCard } from "@/components/home/SpotlightCard";
 import { Testimonial } from "@/components/home/Testimonial";
 import { ReservationForm } from "@/components/contact/ReservationForm";
 import { IconArrowRight } from "@/components/ui/icons";
+import {
+  SvgCarrot,
+  SvgFish,
+  SvgLemon,
+  VectorLeaf,
+  VectorMint,
+} from "@/components/svg";
 
 const MENU_CATEGORIES = [
   {
@@ -34,17 +41,17 @@ const MENU_CATEGORIES = [
 
 const FEATURES = [
   {
-    icon: "/icons/figma/icon-fish.svg",
+    icon: SvgFish,
     title: "Premium Quality",
     text: "Fresh fish and seafood delivered every morning and prepared the same day.",
   },
   {
-    icon: "/icons/figma/icon-carrot.svg",
+    icon: SvgCarrot,
     title: "Seasonal Vegetables",
     text: "Vegetables picked at their peak from local growers we know by name.",
   },
   {
-    icon: "/icons/figma/icon-lemon.svg",
+    icon: SvgLemon,
     title: "Fresh Fruit",
     text: "Bright seasonal fruit that keeps every dessert light and honest.",
   },
@@ -65,7 +72,7 @@ const SPOTLIGHTS = [
       "A closer look at how our kitchen turns simple seasonal produce into dishes worth remembering.",
   },
   {
-    image: "/images/home-asparagus.png",
+    image: "/images/home-asparagus-spears.png",
     imageAlt: "Fresh asparagus spears ready for the kitchen",
     tag: "Vegetarian",
     author: "Dianne Russell",
@@ -123,9 +130,9 @@ export default async function HomePage() {
         <Navbar variant="light" />
 
         {/* Hero — editorial headline beside the feature dish photograph */}
-        <div className="mx-auto grid max-w-[120rem] grid-cols-1 gap-10 px-6 md:px-12 lg:grid-cols-[1.1fr_1fr] xl:gap-0 xl:px-[7.375rem]">
+        <div className="mx-auto grid max-w-[120rem] grid-cols-1 gap-10 px-6 md:px-12 lg:grid-cols-[1.6fr_1fr] xl:gap-0 xl:px-[7.375rem]">
           <div className="flex flex-col justify-center gap-10 py-14 lg:py-32">
-            <h1 className="font-heading text-display font-bold text-white">
+            <h1 className="font-heading font-bold text-white text-[clamp(3rem,6.9vw,9.25rem)] leading-[1.03]">
               Healthy Eating
               <br />
               is important
@@ -136,13 +143,24 @@ export default async function HomePage() {
               A seasonal menu built around fresh, honest ingredients — prepared
               with care and served with pride.
             </p>
+
+            {/* Scroll indicator — vertical label over a dashed rule */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none mt-10 hidden items-center gap-5 xl:flex"
+            >
+              <span className="font-body text-sm uppercase tracking-[0.4em] text-white/70 [writing-mode:vertical-rl]">
+                Scroll
+              </span>
+              <span className="h-28 border-l-2 border-dashed border-white/50" />
+            </div>
           </div>
 
           <div className="relative pb-16 lg:pb-0">
             <div className="relative aspect-[4/5] overflow-clip lg:aspect-auto lg:h-[54rem] xl:h-[60rem]">
               <Image
-                src="/images/home-hero-dish.jpg"
-                alt="A plated salmon fillet with seasonal vegetables"
+                src="/images/home-hero-steak.png"
+                alt="A seared steak on a white plate with fennel, mushrooms and rosemary"
                 fill
                 sizes="(max-width: 1024px) 100vw, 45vw"
                 className="object-cover"
@@ -150,42 +168,31 @@ export default async function HomePage() {
                 fetchPriority="high"
               />
             </div>
-            {/* Three circular spice photographs overlapping the dish image */}
-            <div className="absolute -bottom-6 left-0 hidden items-end gap-5 lg:flex xl:-left-24 xl:bottom-24">
+            {/* Three circular spice photographs overlapping the dish corner */}
+            <div className="absolute -bottom-8 left-0 flex items-end -space-x-4 lg:-left-6">
               <Image
                 src="/images/home-spice-1.png"
                 alt="Bowl of star anise and turmeric"
                 width={200}
                 height={200}
-                className="size-32 rounded-full object-cover xl:size-44"
+                className="size-24 rounded-full object-cover shadow-lg xl:size-36"
               />
               <Image
                 src="/images/home-spice-2.png"
                 alt="Bowl of mixed peppercorns"
                 width={200}
                 height={200}
-                className="size-36 rounded-full object-cover xl:size-48"
+                className="size-28 rounded-full object-cover shadow-lg xl:size-40"
               />
               <Image
                 src="/images/home-spice-3.png"
                 alt="Bowl of ground spices"
                 width={200}
                 height={200}
-                className="size-28 rounded-full object-cover xl:size-40"
+                className="size-24 rounded-full object-cover shadow-lg xl:size-36"
               />
             </div>
           </div>
-        </div>
-
-        {/* Scroll indicator — vertical label over a dashed rule */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-[34rem] left-6 hidden flex-col items-center gap-5 xl:flex 2xl:left-[7.375rem]"
-        >
-          <span className="font-body text-sm uppercase tracking-[0.4em] text-white/70 [writing-mode:vertical-rl]">
-            Scroll
-          </span>
-          <span className="h-28 border-l-2 border-dashed border-white/50" />
         </div>
 
         {/* "Start to plan your diet" — offset image pair */}
@@ -226,28 +233,25 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Our Menu — price list with an eucalyptus photograph */}
+      {/* Our Menu — price list with an eucalyptus photograph bleeding off the top-right */}
       <section className="relative overflow-clip">
+        <Image
+          src="/images/home-eucalyptus-branch.png"
+          alt=""
+          width={400}
+          height={580}
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-6 right-0 hidden w-72 object-contain object-top lg:block xl:w-[24rem]"
+        />
         <div className="mx-auto max-w-[120rem] px-6 py-24 md:px-12 xl:px-[7.375rem] xl:py-32">
-          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1fr_auto]">
-            <div>
-              <h2 className="font-heading text-h2 font-bold text-forest">
-                Our Menu
-              </h2>
-              <p className="mt-6 max-w-md font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
-                This is a section of your menu. A short description keeps it
-                light and easy to read.
-              </p>
-            </div>
-            <div className="relative hidden h-72 w-64 lg:block xl:h-96 xl:w-80">
-              <Image
-                src="/images/home-eucalyptus.png"
-                alt="Eucalyptus branches"
-                fill
-                sizes="20vw"
-                className="object-contain object-top"
-              />
-            </div>
+          <div>
+            <h2 className="font-heading text-h2 font-bold text-forest">
+              Our Menu
+            </h2>
+            <p className="mt-6 max-w-md font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
+              This is a section of your menu. A short description keeps it
+              light and easy to read.
+            </p>
           </div>
 
           <div className="mt-16 grid grid-cols-1 gap-x-20 gap-y-16 lg:grid-cols-2 xl:mt-20">
@@ -262,18 +266,10 @@ export default async function HomePage() {
       <section className="relative overflow-clip bg-sage">
         <div className="mx-auto grid max-w-[120rem] grid-cols-1 items-center gap-14 px-6 py-24 md:px-12 lg:grid-cols-2 xl:px-[7.375rem] xl:py-32">
           <div className="relative">
-            <Image
-              src="/icons/figma/vector-leaf.svg"
-              alt=""
-              width={300}
-              height={300}
-              aria-hidden="true"
-              unoptimized
-              className="pointer-events-none absolute -top-16 -left-10 size-56 opacity-60 xl:size-72"
-            />
+            <VectorLeaf className="pointer-events-none absolute -top-16 -left-10 size-56 text-white opacity-60 xl:size-72" />
             <div className="relative aspect-[37/50] overflow-clip">
               <Image
-                src="/images/home-chef.png"
+                src="/images/home-chef-photo.png"
                 alt="Our chef plating a salmon dish in the kitchen"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
@@ -290,15 +286,7 @@ export default async function HomePage() {
               dish starts at the market and ends on your plate with as little
               interference as possible.
             </p>
-            <Image
-              src="/icons/figma/vector-mint.svg"
-              alt=""
-              width={400}
-              height={280}
-              aria-hidden="true"
-              unoptimized
-              className="pointer-events-none absolute -right-6 -bottom-24 w-64 opacity-60 xl:w-80"
-            />
+            <VectorMint className="pointer-events-none absolute -right-6 -bottom-24 w-64 text-white opacity-60 xl:w-80" />
           </div>
         </div>
       </section>
@@ -368,10 +356,10 @@ export default async function HomePage() {
                 className="absolute inset-x-0 top-0 h-[22%] bg-gradient-to-b from-forest/20 to-transparent"
               />
               <div className="absolute inset-x-0 top-0 flex items-center justify-between px-[8%] pt-[7%]">
-                <h3 className="font-heading text-h4 font-bold text-forest transition-colors group-hover:text-olive">
+                <h3 className="font-heading text-[1.75rem] font-bold text-forest transition-colors group-hover:text-olive xl:text-[2rem]">
                   {card.name}
                 </h3>
-                <IconArrowRight className="h-7 w-12 shrink-0 text-forest transition-transform duration-300 group-hover:translate-x-2" />
+                <IconArrowRight className="h-5 w-9 shrink-0 text-forest transition-transform duration-300 group-hover:translate-x-2" />
               </div>
               <span className="sr-only">Browse {card.name} dishes</span>
             </Link>
