@@ -7,7 +7,8 @@
       "Exec(cp)",
       "Exec(grep)",
       "Exec(python)",
-      "Exec(wc)"
+      "Exec(wc)",
+      "Exec(npx next)"
     ]
   }
 }
