@@ -23,6 +23,27 @@ export function IconArrowRight(props: IconProps) {
   );
 }
 
+export function IconArrowLeft(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 48 28"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+    >
+      <line x1="4" y1="14" x2="48" y2="14" stroke="currentColor" strokeWidth="3" />
+      <path
+        d="M16 3L4 14l12 11"
+        stroke="currentColor"
+        strokeWidth="3"
+        fill="none"
+        strokeLinecap="square"
+      />
+    </svg>
+  );
+}
+
 export function IconChevronDown(props: IconProps) {
   return (
     <svg

@@ -1,18 +1,83 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
-import {
-  getCategories,
-  getFeaturedDishes,
-  getMealsByCategory,
-} from "@/lib/api/menu";
+import { getFeaturedDishes } from "@/lib/api/menu";
 import { RESTAURANT, SITE } from "@/lib/constants";
 import { Navbar } from "@/components/layout/Navbar";
-import { ButtonLink } from "@/components/ui/Button";
-import { CategoryCard } from "@/components/menu/CategoryCard";
-import { DishCard } from "@/components/menu/DishCard";
+import { PriceListItem } from "@/components/menu/PriceListItem";
+import { IconBox } from "@/components/home/IconBox";
+import { SpotlightCard } from "@/components/home/SpotlightCard";
+import { Testimonial } from "@/components/home/Testimonial";
+import { ReservationForm } from "@/components/contact/ReservationForm";
 import { IconArrowRight } from "@/components/ui/icons";
 
-const HOME_CATEGORY_ORDER = ["Starter", "Seafood", "Pasta", "Dessert"];
+const MENU_CATEGORIES = [
+  {
+    name: "Starters",
+    slug: "starter",
+    image: "/images/home-card-starters.png",
+    alt: "Steamed dumplings topped with bacon and fresh dill",
+  },
+  {
+    name: "Mains",
+    slug: "lamb",
+    image: "/images/home-mains.png",
+    alt: "Lamb chops with carrots, corn and rosemary",
+  },
+  {
+    name: "Soups",
+    slug: "side",
+    image: "/images/home-soups.png",
+    alt: "Cream soup served with fresh mint",
+  },
+] as const;
+
+const FEATURES = [
+  {
+    icon: "/icons/figma/icon-fish.svg",
+    title: "Premium Quality",
+    text: "Fresh fish and seafood delivered every morning and prepared the same day.",
+  },
+  {
+    icon: "/icons/figma/icon-carrot.svg",
+    title: "Seasonal Vegetables",
+    text: "Vegetables picked at their peak from local growers we know by name.",
+  },
+  {
+    icon: "/icons/figma/icon-lemon.svg",
+    title: "Fresh Fruit",
+    text: "Bright seasonal fruit that keeps every dessert light and honest.",
+  },
+] as const;
+
+const SPOTLIGHTS = [
+  {
+    image: "/images/home-dish-pear.jpg",
+    imageAlt: "Poached pear dessert with crumbles and fresh herbs",
+    tag: "Dessert",
+    author: "Julie Christie",
+    authorImage: "/images/home-avatar-julie.png",
+    date: "October 17, 2021",
+    time: "3:33 pm",
+    comments: "2 comments",
+    title: "Fruit and vegetables and protection against diseases",
+    excerpt:
+      "A closer look at how our kitchen turns simple seasonal produce into dishes worth remembering.",
+  },
+  {
+    image: "/images/home-asparagus.png",
+    imageAlt: "Fresh asparagus spears ready for the kitchen",
+    tag: "Vegetarian",
+    author: "Dianne Russell",
+    authorImage: "/images/home-avatar-dianne.png",
+    date: "October 17, 2021",
+    time: "4:20 pm",
+    comments: "5 comments",
+    title: "Asparagus Spring Salad with Rocket, Goat's Cheese",
+    excerpt:
+      "Green asparagus, peppery rocket and a soft goat's cheese — the plate that opens our spring menu.",
+  },
+] as const;
 
 export const metadata: Metadata = {
   title: "Mealio — Seasonal Restaurant & Honest Food",
@@ -47,153 +112,277 @@ function RestaurantJsonLd() {
 }
 
 export default async function HomePage() {
-  const [categories, featured] = await Promise.all([
-    getCategories(),
-    getFeaturedDishes(6),
-  ]);
-
-  // Use a real dish photo for each category card rather than the plain
-  // category thumbnail, so cards are filled edge to edge.
-  const menuCategories = (
-    await Promise.all(
-      HOME_CATEGORY_ORDER.map(async (name) => {
-        const category = categories.find((item) => item.name === name);
-        if (!category) return null;
-        const dishes = await getMealsByCategory(name);
-        return { ...category, image: dishes[0]?.image ?? category.image };
-      }),
-    )
-  ).filter((category) => category !== null);
+  const menuDishes = await getFeaturedDishes(4);
 
   return (
     <>
       <RestaurantJsonLd />
-      <Navbar />
 
-      {/* Hero — large editorial headline beside the feature photograph */}
-      <section className="relative overflow-clip">
-        <div className="mx-auto grid max-w-[120rem] grid-cols-1 items-center gap-12 px-6 pb-20 md:px-12 lg:grid-cols-[1.15fr_1fr] lg:gap-0 lg:pb-0 xl:px-[7.375rem]">
-          <div className="flex flex-col gap-10 py-10 lg:py-24">
-            <h1 className="font-heading text-display font-bold text-black">
-              Seasonal food is an important part of lifestyle
+      {/* Dark forest opening block: hero + "plan your diet" */}
+      <section className="relative overflow-clip bg-forest text-white">
+        <Navbar variant="light" />
+
+        {/* Hero — editorial headline beside the feature dish photograph */}
+        <div className="mx-auto grid max-w-[120rem] grid-cols-1 gap-10 px-6 md:px-12 lg:grid-cols-[1.1fr_1fr] xl:gap-0 xl:px-[7.375rem]">
+          <div className="flex flex-col justify-center gap-10 py-14 lg:py-32">
+            <h1 className="font-heading text-display font-bold text-white">
+              Healthy Eating
+              <br />
+              is important
+              <br />
+              part of lifestyle
             </h1>
-            <p className="max-w-xl font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
-              At {SITE.name}, we cook honest food with fresh, local ingredients —
-              a menu that changes with the seasons and celebrates every plate.
+            <p className="max-w-xl font-body text-lg leading-[1.4] tracking-[0.02em] text-white/85 xl:text-2xl">
+              A seasonal menu built around fresh, honest ingredients — prepared
+              with care and served with pride.
             </p>
-            <div>
-              <ButtonLink href="/menu" variant="filled-forest">
-                View Our Menu
-              </ButtonLink>
+          </div>
+
+          <div className="relative pb-16 lg:pb-0">
+            <div className="relative aspect-[4/5] overflow-clip lg:aspect-auto lg:h-[54rem] xl:h-[60rem]">
+              <Image
+                src="/images/home-hero-dish.jpg"
+                alt="A plated salmon fillet with seasonal vegetables"
+                fill
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover"
+                loading="eager"
+                fetchPriority="high"
+              />
+            </div>
+            {/* Three circular spice photographs overlapping the dish image */}
+            <div className="absolute -bottom-6 left-0 hidden items-end gap-5 lg:flex xl:-left-24 xl:bottom-24">
+              <Image
+                src="/images/home-spice-1.png"
+                alt="Bowl of star anise and turmeric"
+                width={200}
+                height={200}
+                className="size-32 rounded-full object-cover xl:size-44"
+              />
+              <Image
+                src="/images/home-spice-2.png"
+                alt="Bowl of mixed peppercorns"
+                width={200}
+                height={200}
+                className="size-36 rounded-full object-cover xl:size-48"
+              />
+              <Image
+                src="/images/home-spice-3.png"
+                alt="Bowl of ground spices"
+                width={200}
+                height={200}
+                className="size-28 rounded-full object-cover xl:size-40"
+              />
             </div>
           </div>
-          <div className="relative aspect-[4/5] overflow-clip lg:aspect-auto lg:h-[52rem]">
+        </div>
+
+        {/* Scroll indicator — vertical label over a dashed rule */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-[34rem] left-6 hidden flex-col items-center gap-5 xl:flex 2xl:left-[7.375rem]"
+        >
+          <span className="font-body text-sm uppercase tracking-[0.4em] text-white/70 [writing-mode:vertical-rl]">
+            Scroll
+          </span>
+          <span className="h-28 border-l-2 border-dashed border-white/50" />
+        </div>
+
+        {/* "Start to plan your diet" — offset image pair */}
+        <div className="mx-auto grid max-w-[120rem] grid-cols-1 gap-14 px-6 pb-24 md:px-12 lg:grid-cols-2 xl:gap-24 xl:px-[7.375rem] xl:pb-36">
+          <div className="flex flex-col gap-10">
+            <div className="relative aspect-[11/10] w-full max-w-[42rem] overflow-clip">
+              <Image
+                src="/images/home-soup-bowl.png"
+                alt="A bowl of clam chowder with fresh herbs"
+                fill
+                sizes="(max-width: 1024px) 100vw, 38vw"
+                className="object-cover"
+              />
+            </div>
+            <h2 className="font-heading text-h2 font-bold text-white">
+              Start to plan your diet today
+            </h2>
+            <p className="max-w-lg font-body text-lg leading-[1.4] tracking-[0.02em] text-white/85 xl:text-2xl">
+              Our chef builds a balanced plate around what the season offers —
+              vegetables, grains and proteins chosen each morning.
+            </p>
+          </div>
+          <div className="flex flex-col gap-10 lg:pt-24">
+            <p className="max-w-lg font-body text-lg leading-[1.4] tracking-[0.02em] text-white/85 lg:ml-auto xl:text-2xl">
+              Every dish on the menu can be adapted — ask the kitchen for a
+              lighter version or a vegetarian twist.
+            </p>
+            <div className="relative aspect-[11/10] w-full max-w-[42rem] overflow-clip lg:ml-auto">
+              <Image
+                src="/images/home-grinders.png"
+                alt="Salt and pepper grinders on the kitchen counter"
+                fill
+                sizes="(max-width: 1024px) 100vw, 38vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Menu — price list with an eucalyptus photograph */}
+      <section className="relative overflow-clip">
+        <div className="mx-auto max-w-[120rem] px-6 py-24 md:px-12 xl:px-[7.375rem] xl:py-32">
+          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1fr_auto]">
+            <div>
+              <h2 className="font-heading text-h2 font-bold text-forest">
+                Our Menu
+              </h2>
+              <p className="mt-6 max-w-md font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
+                This is a section of your menu. A short description keeps it
+                light and easy to read.
+              </p>
+            </div>
+            <div className="relative hidden h-72 w-64 lg:block xl:h-96 xl:w-80">
+              <Image
+                src="/images/home-eucalyptus.png"
+                alt="Eucalyptus branches"
+                fill
+                sizes="20vw"
+                className="object-contain object-top"
+              />
+            </div>
+          </div>
+
+          <div className="mt-16 grid grid-cols-1 gap-x-20 gap-y-16 lg:grid-cols-2 xl:mt-20">
+            {menuDishes.map((dish) => (
+              <PriceListItem key={dish.id} dish={dish} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Excellent cook — chef photograph on sage with line-art leaves */}
+      <section className="relative overflow-clip bg-sage">
+        <div className="mx-auto grid max-w-[120rem] grid-cols-1 items-center gap-14 px-6 py-24 md:px-12 lg:grid-cols-2 xl:px-[7.375rem] xl:py-32">
+          <div className="relative">
             <Image
-              src="/images/hero-home.jpg"
-              alt="Oranges growing on the tree — the season's harvest"
-              fill
-              sizes="(max-width: 1024px) 100vw, 45vw"
-              className="object-cover"
-              loading="eager"
-              fetchPriority="high"
+              src="/icons/figma/vector-leaf.svg"
+              alt=""
+              width={300}
+              height={300}
+              aria-hidden="true"
+              unoptimized
+              className="pointer-events-none absolute -top-16 -left-10 size-56 opacity-60 xl:size-72"
+            />
+            <div className="relative aspect-[37/50] overflow-clip">
+              <Image
+                src="/images/home-chef.png"
+                alt="Our chef plating a salmon dish in the kitchen"
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+          <div className="relative flex flex-col items-start gap-8">
+            <h2 className="font-heading text-h2 font-bold text-forest">
+              Excellent cook
+            </h2>
+            <p className="max-w-lg font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
+              Our kitchen is led by people who love the ingredient first. Every
+              dish starts at the market and ends on your plate with as little
+              interference as possible.
+            </p>
+            <Image
+              src="/icons/figma/vector-mint.svg"
+              alt=""
+              width={400}
+              height={280}
+              aria-hidden="true"
+              unoptimized
+              className="pointer-events-none absolute -right-6 -bottom-24 w-64 opacity-60 xl:w-80"
             />
           </div>
         </div>
       </section>
 
-      {/* Menu categories */}
+      {/* Feature icon boxes */}
       <section className="mx-auto max-w-[120rem] px-6 py-24 md:px-12 xl:px-[7.375rem] xl:py-32">
-        <div className="flex items-end justify-between gap-8">
-          <h2 className="font-heading text-h2 font-bold text-forest">
-            Our Menu
-          </h2>
-          <ButtonLink href="/menu" variant="border-dark" className="hidden md:inline-flex">
-            See All Dishes
-          </ButtonLink>
-        </div>
-        <div
-          aria-hidden="true"
-          className="mt-8 border-t-2 border-dashed border-olive/50"
-        />
-        <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4">
-          {menuCategories.map((category) => (
-            <CategoryCard key={category.slug} category={category} />
+        <div className="grid grid-cols-1 gap-16 md:grid-cols-3 xl:gap-10">
+          {FEATURES.map((feature) => (
+            <IconBox key={feature.title} {...feature} />
           ))}
         </div>
       </section>
 
-      {/* Chef's selection */}
-      <section className="bg-sage">
-        <div className="mx-auto max-w-[120rem] px-6 py-24 md:px-12 xl:px-[7.375rem] xl:py-32">
-          <div className="mx-auto flex max-w-4xl flex-col items-center gap-5 text-center">
-            <h2 className="font-heading text-h2 font-bold text-forest">
-              Chef&rsquo;s Selection
-            </h2>
-            <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
-              A rotating selection of dishes our kitchen is proud of right now.
-            </p>
-          </div>
-          <div className="mt-16 grid grid-cols-1 gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((dish) => (
-              <DishCard key={dish.id} dish={dish} />
-            ))}
-          </div>
-          <div className="mt-16 flex justify-center">
-            <ButtonLink href="/menu" variant="border-dark">
-              Explore the Full Menu
-            </ButtonLink>
-          </div>
+      {/* Kitchen journal — two editorial spotlight cards */}
+      <section className="mx-auto max-w-[120rem] px-6 pb-24 md:px-12 xl:px-[7.375rem] xl:pb-32">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 xl:gap-24">
+          {SPOTLIGHTS.map((spotlight) => (
+            <SpotlightCard key={spotlight.title} href="/menu" {...spotlight} />
+          ))}
         </div>
       </section>
 
-      {/* About teaser */}
-      <section className="mx-auto grid max-w-[120rem] grid-cols-1 items-center gap-14 px-6 py-24 md:px-12 lg:grid-cols-2 xl:px-[7.375rem] xl:py-32">
-        <div className="relative aspect-[4/3] overflow-clip">
-          <Image
-            src="/images/hero-about.jpg"
-            alt="An elegantly plated dish in the Mealio dining room"
-            fill
-            sizes="(max-width: 1024px) 100vw, 45vw"
-            className="object-cover"
-          />
-        </div>
-        <div className="flex flex-col items-start gap-8">
-          <h2 className="font-heading text-h2 font-bold text-forest">
-            Cooked with care, served with pride
-          </h2>
-          <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
-            {SITE.name} began with a simple idea: let the ingredient lead. Every
-            morning we choose what the season offers and build the day&rsquo;s
-            menu around it — vegetables, fish, meats and desserts prepared with
-            restraint and respect.
-          </p>
-          <ButtonLink href="/about" variant="border-dark">
-            More About Us
-            <IconArrowRight className="ml-4 h-6 w-10" />
-          </ButtonLink>
-        </div>
-      </section>
-
-      {/* Reservation call to action */}
+      {/* Reservation */}
       <section className="bg-sage">
-        <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-6 py-24 text-center md:px-12 xl:py-32">
+        <div className="mx-auto flex max-w-[103rem] flex-col items-center gap-8 px-6 py-24 text-center md:px-12 xl:py-32">
           <h2 className="font-heading text-h1 font-bold text-black">
             Make a Reservation
           </h2>
           <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
             Get in touch with the restaurant
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
-            <ButtonLink href="/contact" variant="filled-forest">
-              Book a Table
-            </ButtonLink>
-            <a
-              href={`tel:${RESTAURANT.phone.replace(/[^+\d]/g, "")}`}
-              className="font-body text-xl tracking-[0.02em] text-forest underline-offset-4 transition-colors hover:text-olive hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive"
-            >
-              or call {RESTAURANT.phone}
-            </a>
+          <div className="mt-10 w-full">
+            <ReservationForm />
           </div>
+        </div>
+      </section>
+
+      {/* Calories Energy Balance — three menu category cards */}
+      <section className="mx-auto max-w-[120rem] px-6 py-24 md:px-12 xl:px-[7.375rem] xl:py-32">
+        <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
+          <h2 className="font-heading text-h2 font-bold text-black">
+            Calories
+            <br />
+            Energy Balance
+          </h2>
+          <p className="font-body text-lg leading-[1.4] tracking-[0.02em] text-stone-text xl:text-2xl">
+            Explore the menu by course — from light starters to generous mains
+            and comforting soups.
+          </p>
+        </div>
+        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
+          {MENU_CATEGORIES.map((card) => (
+            <Link
+              key={card.slug}
+              href={`/menu?category=${card.slug}`}
+              className="group relative block aspect-[508/710] overflow-clip focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive"
+            >
+              <Image
+                src={card.image}
+                alt={card.alt}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover object-bottom transition-transform duration-500 group-hover:scale-105"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-x-0 top-0 h-[22%] bg-gradient-to-b from-forest/20 to-transparent"
+              />
+              <div className="absolute inset-x-0 top-0 flex items-center justify-between px-[8%] pt-[7%]">
+                <h3 className="font-heading text-h4 font-bold text-forest transition-colors group-hover:text-olive">
+                  {card.name}
+                </h3>
+                <IconArrowRight className="h-7 w-12 shrink-0 text-forest transition-transform duration-300 group-hover:translate-x-2" />
+              </div>
+              <span className="sr-only">Browse {card.name} dishes</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Testimonial */}
+      <section className="mx-auto max-w-[120rem] px-6 pb-24 md:px-12 xl:px-[7.375rem] xl:pb-40">
+        <div className="mx-auto max-w-4xl">
+          <Testimonial />
         </div>
       </section>
     </>

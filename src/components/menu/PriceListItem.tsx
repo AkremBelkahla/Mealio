@@ -20,7 +20,7 @@ export function PriceListItem({ dish, description }: PriceListItemProps) {
           className="border-t-2 border-dashed border-black/60"
         />
       </div>
-      <h3 className="font-heading text-[clamp(1.9rem,4vw,3.4rem)] font-bold leading-[1.15] text-black">
+      <h3 className="font-heading text-h3 font-bold leading-[1.15] text-black">
         <Link
           href={`/menu/${dish.id}`}
           className="transition-colors hover:text-olive focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive"
