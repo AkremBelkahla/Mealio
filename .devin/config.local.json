@@ -8,7 +8,12 @@
       "Exec(grep)",
       "Exec(python)",
       "Exec(wc)",
-      "Exec(npx next)"
+      "Exec(npx next)",
+      "Exec(npm run)",
+      "Exec(npm install)",
+      "Exec(npx vitest)",
+      "Exec(sleep)",
+      "Exec(git ls-files)"
     ]
   }
 }

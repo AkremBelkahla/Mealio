@@ -17,7 +17,7 @@ export function Navbar({ variant = "dark", overlay = false }: NavbarProps) {
     <header
       className={cn(
         "z-40",
-        overlay ? "absolute inset-x-0 top-0" : "relative border-b-2 border-dashed border-olive/30",
+        overlay ? "absolute inset-x-0 top-0" : "relative",
       )}
     >
       <div className="mx-auto flex h-24 max-w-[120rem] items-center gap-4 px-6 md:px-12 xl:h-52 xl:gap-10 xl:px-[7.375rem]">
@@ -35,13 +35,14 @@ export function Navbar({ variant = "dark", overlay = false }: NavbarProps) {
           >
             {RESTAURANT.phone}
           </a>
-          <ButtonLink
-            href="/contact"
-            variant={light ? "border-light" : "border-dark"}
-            className="hidden sm:inline-flex"
-          >
-            Reservations
-          </ButtonLink>
+          <div className="hidden sm:block">
+            <ButtonLink
+              href="/contact"
+              variant={light ? "border-light" : "border-dark"}
+            >
+              Reservations
+            </ButtonLink>
+          </div>
         </div>
       </div>
     </header>

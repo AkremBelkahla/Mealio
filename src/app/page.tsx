@@ -1,6 +1,10 @@
 import Image from "next/image";
 import type { Metadata } from "next";
-import { getCategories, getFeaturedDishes } from "@/lib/api/menu";
+import {
+  getCategories,
+  getFeaturedDishes,
+  getMealsByCategory,
+} from "@/lib/api/menu";
 import { RESTAURANT, SITE } from "@/lib/constants";
 import { Navbar } from "@/components/layout/Navbar";
 import { ButtonLink } from "@/components/ui/Button";
@@ -48,9 +52,18 @@ export default async function HomePage() {
     getFeaturedDishes(6),
   ]);
 
-  const menuCategories = HOME_CATEGORY_ORDER.map((name) =>
-    categories.find((category) => category.name === name),
-  ).filter((category) => category !== undefined);
+  // Use a real dish photo for each category card rather than the plain
+  // category thumbnail, so cards are filled edge to edge.
+  const menuCategories = (
+    await Promise.all(
+      HOME_CATEGORY_ORDER.map(async (name) => {
+        const category = categories.find((item) => item.name === name);
+        if (!category) return null;
+        const dishes = await getMealsByCategory(name);
+        return { ...category, image: dishes[0]?.image ?? category.image };
+      }),
+    )
+  ).filter((category) => category !== null);
 
   return (
     <>

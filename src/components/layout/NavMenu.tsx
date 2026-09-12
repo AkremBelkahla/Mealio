@@ -17,9 +17,13 @@ export function NavMenu({ variant = "dark" }: NavMenuProps) {
   const pathname = usePathname();
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => {
+  // Close the menu on navigation — adjust state during render (React-recommended
+  // alternative to setState inside an effect).
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
     setOpen(false);
-  }, [pathname]);
+  }
 
   useEffect(() => {
     if (!open) return;
