@@ -33,7 +33,7 @@ export default function ContactPage() {
         title="Contact"
         subtitle="Reserve a table, ask a question or simply say hello."
         image="/images/hero-contact.jpg"
-        imageAlt="An elegant dish served at Mealio"
+        imageAlt="Dark heirloom cabbage leaves — seasonal produce at Mealio"
       />
 
       {/* Reservation request — styled after the reference design form */}

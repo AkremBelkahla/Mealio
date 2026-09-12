@@ -37,7 +37,7 @@ export default function AboutPage() {
         title="About"
         subtitle="Our story, our kitchen and the people behind every plate."
         image="/images/hero-about.jpg"
-        imageAlt="Fresh seasonal produce, the heart of the Mealio kitchen"
+        imageAlt="An elegantly plated dish, the pride of the Mealio kitchen"
       />
 
       <section className="mx-auto grid max-w-[120rem] grid-cols-1 items-center gap-14 px-6 py-24 md:px-12 lg:grid-cols-2 xl:px-[7.375rem] xl:py-32">
@@ -59,10 +59,11 @@ export default function AboutPage() {
         <div className="relative aspect-[4/3] overflow-clip">
           <Image
             src="/images/hero-contact.jpg"
-            alt="An elegant plated dish in the Mealio dining room"
+            alt="A dark heirloom cabbage — seasonal produce at its best"
             fill
             sizes="(max-width: 1024px) 100vw, 45vw"
             className="object-cover"
+            loading="eager"
           />
         </div>
       </section>

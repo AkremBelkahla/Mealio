@@ -90,7 +90,7 @@ export default async function HomePage() {
           <div className="relative aspect-[4/5] overflow-clip lg:aspect-auto lg:h-[52rem]">
             <Image
               src="/images/hero-home.jpg"
-              alt="A vibrant plate of seasonal vegetables and citrus"
+              alt="Oranges growing on the tree — the season's harvest"
               fill
               sizes="(max-width: 1024px) 100vw, 45vw"
               className="object-cover"
@@ -151,7 +151,7 @@ export default async function HomePage() {
         <div className="relative aspect-[4/3] overflow-clip">
           <Image
             src="/images/hero-about.jpg"
-            alt="Fresh cabbage and seasonal produce from the market"
+            alt="An elegantly plated dish in the Mealio dining room"
             fill
             sizes="(max-width: 1024px) 100vw, 45vw"
             className="object-cover"

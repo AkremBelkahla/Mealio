@@ -27,7 +27,7 @@ export default async function MenuPage() {
         title="Our Menu"
         subtitle="Seasonal dishes prepared daily with fresh, honest ingredients."
         image="/images/hero-menu-detail.jpg"
-        imageAlt="A carefully plated dish at Mealio"
+        imageAlt="A fresh cut of steak with garlic and rosemary"
       />
 
       <section className="mx-auto max-w-[120rem] px-6 py-24 md:px-12 xl:px-[7.375rem] xl:py-32">
